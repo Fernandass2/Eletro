@@ -1,0 +1,72 @@
+Formulário de Coleta de Requisitos para Sistema de Suporte de Eletrodomésticos
+1. Informações do Cliente
+
+Nome Completo:
+[__________________________]
+
+Telefone de Contato:
+[__________________________]
+
+E-mail:
+[__________________________]
+
+CPF ou CNPJ (se aplicável):
+[__________________________]
+
+2. Informações do Eletrodoméstico
+
+Tipo de Eletrodoméstico:
+[ ] Geladeira
+[ ] Máquina de Lavar
+[ ] Micro-ondas
+[ ] Fogão
+[ ] Ar-condicionado
+[ ] Outros: [___________]
+
+Marca:
+[__________________________]
+
+Modelo:
+[__________________________]
+
+Ano de Fabricação:
+[__________________________]
+
+Número de Série (se aplicável):
+[__________________________]
+
+3. Descrição do Problema
+
+Qual é o problema ou defeito apresentado pelo eletrodoméstico?
+[______________________________________________________________________]
+
+Há quanto tempo o problema ocorre?
+[__________________________]
+
+O problema afeta o funcionamento do produto?
+[ ] Sim
+[ ] Não
+
+4. Ordem de Serviço (OS)
+
+Data e Hora para Agendamento da Visita Técnica:
+[__________________________]
+Informe a data e hora desejada para o agendamento da visita técnica.
+
+Prioridade do Atendimento:
+[ ] Baixa
+[ ] Média
+[ ] Alta
+
+Técnico Preferencial (se houver):
+[__________________________]
+
+5. Informações Adicionais
+
+Observações ou Informações Extras:
+[______________________________________________________________________]
+6. Consentimento
+
+Eu autorizo o uso das informações fornecidas para o processo de agendamento e execução da manutenção do meu eletrodoméstico.
+[ ] Sim
+[ ] Não
