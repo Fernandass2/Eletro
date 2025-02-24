@@ -1,0 +1,23 @@
+{
+  "name": "eletro",
+  "version": "1.0.0",
+  "description": "Assistencia Tecnica de Eletrodomestico.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fernandass2/Eletro.git"
+  },
+  "author": "Fernanda Batista",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fernandass2/Eletro/issues"
+  },
+  "homepage": "https://github.com/Fernandass2/Eletro#readme",
+  "devDependencies": {
+    "electron": "^34.2.0"
+  }
+}
