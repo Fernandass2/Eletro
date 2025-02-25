@@ -1,0 +1,11 @@
+/* Estilos para o rodapé */
+footer {
+    background-color: #343a40; /* Cinza escuro */
+    color: white; /* Cor do texto */
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}

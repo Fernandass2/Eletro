@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emissão de Ordem de Serviço</title>
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="../public/css/os.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <h2>Emissão de Ordem de Serviço</h2>
+        <form>
+            <!-- Campo ID da Ordem de Serviço -->
+            <div class="form-group">
+                <label for="osId">ID da Ordem de Serviço</label>
+                <input type="text" class="form-control" id="osId" placeholder="Digite o ID da OS">
+            </div>
+
+            <!-- Campo Descrição do Serviço -->
+            <div class="form-group">
+                <label for="descricao">Descrição do Serviço</label>
+                <textarea class="form-control" id="descricao" rows="4" placeholder="Digite a descrição do serviço"></textarea>
+            </div>
+
+            <!-- Campo Data de Entrada -->
+            <div class="form-group">
+                <label for="dataEntrada">Data de Entrada</label>
+                <input type="date" class="form-control" id="dataEntrada">
+            </div>
+
+            <!-- Campo Data de Saída -->
+            <div class="form-group">
+                <label for="dataSaida">Data de Saída</label>
+                <input type="date" class="form-control" id="dataSaida">
+            </div>
+
+            <!-- Botão para Emitir Ordem -->
+            <button type="submit" class="btn btn-success">Emitir Ordem de Serviço</button>
+        </form>
+
+        <!-- Botão Voltar ao Início -->
+        <a href="../views/index.html" class="btn btn-secondary mt-3">Voltar para o Início</a>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-2">
+        <!-- Exibindo a data no rodapé -->
+        <p id="dataatual"></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script para exibir a data no rodapé -->
+    <script>
+        // Função para formatar a data
+        function formatarData() {
+            const hoje = new Date();
+            const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            let dataFormatada = hoje.toLocaleDateString('pt-BR', opcoes);
+            return dataFormatada;
+        }
+
+        // Exibindo a data no rodapé
+        const dataElemento = document.getElementById('dataatual');
+        dataElemento.innerHTML = formatarData();
+    </script>
+
+</body>
+
+</html>

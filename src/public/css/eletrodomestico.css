@@ -1,0 +1,30 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333; /* Cinza escuro */
+    color: white;
+    padding: 10px;
+}
+
+/* Link "Voltar ao Início" */
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Estilo para a lista de eletrodomésticos */
+.list-group-item {
+    font-size: 1.1em;
+}
+

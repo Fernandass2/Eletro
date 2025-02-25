@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes</title>
+    <link rel="stylesheet" href="../public/css/cadastro.css">
+</head>
+
+<body>
+    <div class="container my-5">
+        <h1>Cadastro de Clientes</h1>
+        <form action="/cadastro" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome do cliente" required>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF do cliente" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Digite o telefone do cliente" required>
+            </div>
+
+            <!-- Botões -->
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="reset" class="btn btn-warning">Cancelar</button>
+            <button type="button" class="btn btn-secondary" id="btnVoltar">Voltar ao Início</button>
+        </form>
+    </div>
+
+    <!-- Barra de Horário no Rodapé -->
+    <footer class="bg-gray text-white text-center py-2">
+        <p id="dataatual"></p>
+    </footer>
+
+    <script>
+        // Exibir data no rodapé
+        function formatarData() {
+            const hoje = new Date();
+            const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            document.getElementById('dataatual').innerHTML = hoje.toLocaleDateString('pt-BR', opcoes);
+        }
+        formatarData();
+
+        // Botão Voltar ao Início
+        document.getElementById("btnVoltar").onclick = function() {
+            window.location.href = 'index.html'; // Ajuste conforme a estrutura de pastas
+        };
+    </script>
+
+</body>
+
+</html>

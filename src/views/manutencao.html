@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Manutenção</title>
+    <link rel="stylesheet" href="../public/css/manutencao.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Registro de Manutenção</h1>
+        <form action="/manutencao" method="POST" id="formularioManutencao">
+            <div class="form-group">
+                <label for="os_id">ID da Ordem de Serviço</label>
+                <input type="text" class="form-control" id="os_id" name="os_id" placeholder="Digite o ID da OS" required>
+            </div>
+            <div class="form-group">
+                <label for="detalhes_manutencao">Detalhes da Manutenção</label>
+                <textarea class="form-control" id="detalhes_manutencao" name="detalhes_manutencao" rows="4" placeholder="Detalhe o serviço realizado" required></textarea>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-success">Registrar</button>
+                <button type="button" class="btn btn-danger" id="btnCancelar">Cancelar</button>
+                <button type="button" class="btn btn-warning" id="btnVoltar">Voltar ao Início</button>
+            </div>
+        </form>
+        <div id="mensagemEnviada">
+            <p><strong>Manutenção registrada!</strong> Redirecionando...</p>
+        </div>
+    </div>
+
+    <!-- Barra de Horário no Rodapé -->
+    <footer>
+        <p id="dataatual"></p>
+    </footer>
+
+    <script>
+        // Exibir a data atual no rodapé
+        function formatarData() {
+            const hoje = new Date();
+            const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            document.getElementById('dataatual').innerHTML = hoje.toLocaleDateString('pt-BR', opcoes);
+        }
+        formatarData();
+
+        // Evento do botão "Cancelar"
+        document.getElementById("btnCancelar").onclick = function () {
+            document.getElementById("formularioManutencao").reset();
+        };
+
+        // Evento do botão "Voltar ao Início"
+        document.getElementById("btnVoltar").onclick = function () {
+            window.location.href = 'index.html';
+        };
+
+        // Evento de envio do formulário
+        document.getElementById("formularioManutencao").onsubmit = function (event) {
+            event.preventDefault();
+            document.getElementById('mensagemEnviada').style.display = 'block';
+            setTimeout(function () {
+                window.location.href = 'index.html';
+            }, 2000);
+        };
+    </script>
+
+</body>
+</html>

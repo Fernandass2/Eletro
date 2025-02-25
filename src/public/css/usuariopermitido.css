@@ -1,0 +1,41 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o rodapé fique no final da página */
+}
+
+/* Rodapé */
+footer {
+    background-color: #333; /* Cinza escuro */
+    color: white;
+    padding: 10px;
+    margin-top: auto; /* Garante que o rodapé fique no final da página */
+}
+
+/* Link "Voltar ao Início" */
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Estilo para a lista de eletrodomésticos */
+.list-group-item {
+    font-size: 1.1em;
+    margin-bottom: 10px; /* Adiciona um espaço entre os itens da lista */
+}
+
+/* Estilo para o título */
+h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}

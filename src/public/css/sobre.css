@@ -1,0 +1,28 @@
+/* Estilos personalizados para a página inicial */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Cor de fundo suave */
+    color: #333;
+}
+
+.container {
+    max-width: 1200px; /* Ajustando a largura máxima da página */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    padding: 15px; /* Adiciona algum espaçamento interno */
+}
+
+h1.display-4 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2em;
+    color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+}

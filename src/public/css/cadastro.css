@@ -1,0 +1,73 @@
+/* Garante que a página ocupe toda a altura da tela */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Faz com que o conteúdo principal ocupe o espaço disponível */
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estiliza o rodapé com cinza escuro */
+footer {
+    background-color: #333; /* Cinza escuro */
+    color: white; /* Cor do texto no rodapé */
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+/* Formulário com largura limitada */
+form {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Estilo para cada grupo de campo, com espaçamento entre os itens */
+.form-group {
+    margin-bottom: 15px; /* Adiciona um espaço entre os campos */
+}
+
+/* Centraliza o texto dos botões */
+button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Botões */
+.btn-success {
+    background-color: #00FF00;
+    border-color: #00FF00;
+}
+
+.btn-warning {
+    background-color: #FF0000;
+    border-color: #FF0000;
+}
+
+.btn-secondary {
+    background-color: grey;
+    border-color: grey;
+}
+
+/* Barra de Horário (ajuste para a cor de fundo ser igual ao rodapé) */
+footer p {
+    margin: 0;
+    font-size: 14px;
+    padding: 5px 0;
+    background-color: #333; /* Garanta que o fundo seja igual ao do rodapé */
+    color: white; /* Cor do texto */
+}
+
+/* Impede rolagem horizontal */
+body {
+    overflow-x: hidden; /* Impede a rolagem horizontal */
+}

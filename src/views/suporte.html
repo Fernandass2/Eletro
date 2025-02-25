@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="../public/css/suporte.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <h2>Relatório de Atendimento</h2>
+        <p>Aqui estão os detalhes dos atendimentos realizados.</p>
+
+        <!-- Tabela de Relatório (exemplo) -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome do Cliente</th>
+                    <th>Data de Entrada</th>
+                    <th>Data de Saída</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Exemplo de dados -->
+                <tr>
+                    <td>1</td>
+                    <td>João Silva</td>
+                    <td>2025-02-20</td>
+                    <td>2025-02-22</td>
+                    <td>Concluído</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Maria Oliveira</td>
+                    <td>2025-02-18</td>
+                    <td>2025-02-21</td>
+                    <td>Em andamento</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Lucas Pereira</td>
+                    <td>2025-02-19</td>
+                    <td>2025-02-20</td>
+                    <td>Concluído</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <!-- Seção de Relatar Problema -->
+        <h3>Relatar um Problema</h3>
+        <p>Se você encontrou algum erro ou problema, por favor, descreva abaixo para que possamos ajudar.</p>
+
+        <!-- Formulário para Relatar Problema -->
+        <form>
+            <div class="form-group">
+                <label for="nomeProblema">Seu Nome:</label>
+                <input type="text" class="form-control" id="nomeProblema" placeholder="Digite seu nome" required>
+            </div>
+            <div class="form-group">
+                <label for="descricaoProblema">Descrição do Problema:</label>
+                <textarea class="form-control" id="descricaoProblema" rows="4" placeholder="Descreva o problema encontrado" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-danger">Relatar Problema</button>
+        </form>
+
+        <hr>
+
+        <!-- Link para Voltar ao Início -->
+        <a href="../views/index.html" class="btn btn-secondary mt-3">Voltar ao Início</a>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white text-center py-2">
+        <p id="dataatual"></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script para exibir a data no rodapé -->
+    <script>
+        function formatarData() {
+            const hoje = new Date();
+            const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            let dataFormatada = hoje.toLocaleDateString('pt-BR', opcoes);
+            return dataFormatada;
+        }
+        const dataElemento = document.getElementById('dataatual');
+        dataElemento.innerHTML = formatarData();
+    </script>
+
+</body>
+
+</html>
