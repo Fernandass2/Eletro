@@ -1,0 +1,113 @@
+/* Estilo geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Container principal */
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título da página */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo da lista de clientes */
+#listaClientes {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#listaClientes li {
+    display: flex;
+    justify-content: space-between; /* Coloca o conteúdo e o botão de excluir em extremos opostos */
+    align-items: center; /* Alinha verticalmente */
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#listaClientes li:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+/* Estilo do botão de Excluir */
+.btnExcluir {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnExcluir:hover {
+    background-color: #c82333;
+}
+
+/* Link para cadastrar novo cliente */
+a {
+    display: inline-block;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    background-color: #28a745; /* Cor verde */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #218838; /* Cor verde escuro ao passar o mouse */
+}
+
+/* Rodapé */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    font-size: 14px;
+}
+/* Estilo do botão Voltar para o Início */
+.btnVoltar {
+    display: inline-block;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff; /* Cor azul */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.btnVoltar:hover {
+    background-color: #0056b3; /* Cor azul escuro ao passar o mouse */
+}

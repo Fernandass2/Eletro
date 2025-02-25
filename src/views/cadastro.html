@@ -1,57 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Clientes</title>
+    <title>Cadastrar Cliente</title>
     <link rel="stylesheet" href="../public/css/cadastro.css">
 </head>
-
 <body>
-    <div class="container my-5">
-        <h1>Cadastro de Clientes</h1>
-        <form action="/cadastro" method="POST">
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome do cliente" required>
-            </div>
-            <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF do cliente" required>
-            </div>
-            <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Digite o telefone do cliente" required>
-            </div>
 
-            <!-- Botões -->
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <button type="reset" class="btn btn-warning">Cancelar</button>
-            <button type="button" class="btn btn-secondary" id="btnVoltar">Voltar ao Início</button>
-        </form>
-    </div>
+<div class="container">
+    <h1>Cadastrar Novo Cliente</h1>
+    <form id="formCadastro">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+    <a href="../views/clientes.html">Ver Lista de Clientes</a>
+</div>
 
-    <!-- Barra de Horário no Rodapé -->
-    <footer class="bg-gray text-white text-center py-2">
-        <p id="dataatual"></p>
-    </footer>
+<!-- Rodapé com a data atual -->
+<footer class="footer">
+    <p id="dataatual"></p>
+</footer>
 
-    <script>
-        // Exibir data no rodapé
-        function formatarData() {
-            const hoje = new Date();
-            const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-            document.getElementById('dataatual').innerHTML = hoje.toLocaleDateString('pt-BR', opcoes);
-        }
-        formatarData();
+<script>
+// Função para salvar o cliente no localStorage
+document.getElementById('formCadastro').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar que o formulário seja enviado da forma tradicional
 
-        // Botão Voltar ao Início
-        document.getElementById("btnVoltar").onclick = function() {
-            window.location.href = 'index.html'; // Ajuste conforme a estrutura de pastas
-        };
-    </script>
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const endereco = document.getElementById('endereco').value;
+
+    // Criar um objeto cliente
+    const novoCliente = { nome, email, telefone, endereco };
+
+    // Recuperar a lista de clientes do localStorage (se já existir)
+    let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
+
+    // Adicionar o novo cliente
+    clientes.push(novoCliente);
+
+    // Salvar a lista de clientes novamente no localStorage
+    localStorage.setItem('clientes', JSON.stringify(clientes));
+
+    // Limpar os campos do formulário
+    document.getElementById('nome').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('telefone').value = '';
+    document.getElementById('endereco').value = '';
+
+    alert('Cliente cadastrado com sucesso!');
+});
+
+// Função para exibir a data atual no rodapé
+function formatarData() {
+    const hoje = new Date();
+    const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+    let dataFormatada = hoje.toLocaleDateString('pt-BR', opcoes);
+    return dataFormatada;
+}
+
+// Exibindo a data no rodapé
+const dataElemento = document.getElementById('dataatual');
+dataElemento.innerHTML = formatarData();
+</script>
 
 </body>
-
 </html>

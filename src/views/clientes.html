@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="../public/css/cadastro.css">
+    <link rel="stylesheet" href="../public/css/cliente.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Lista de Clientes</h1>
+    <ul id="listaClientes">
+        <!-- Aqui serão listados os clientes -->
+    </ul>
+
+</div>
+<!-- Link para voltar à página inicial -->
+<a href="../views/index.html" class="btnVoltar">Voltar para o Início</a>
+<a href="../views/cadastro.html">Cadastrar Novo Cliente</a>
+
+<!-- Rodapé com a data atual -->
+<footer class="footer">
+    <p id="dataatual"></p>
+</footer>
+
+<script>
+// Função para exibir a lista de clientes
+function exibirClientes() {
+    const listaClientes = document.getElementById('listaClientes');
+
+    // Recuperar a lista de clientes do localStorage
+    const clientes = JSON.parse(localStorage.getItem('clientes')) || [];
+
+    // Limpar a lista atual
+    listaClientes.innerHTML = '';
+
+    // Adicionar os clientes na lista
+    clientes.forEach((cliente, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${cliente.nome} - ${cliente.email} - ${cliente.telefone} - ${cliente.endereco}`;
+
+        // Criar o botão de excluir
+        const botaoExcluir = document.createElement('button');
+        botaoExcluir.textContent = 'Excluir';
+        botaoExcluir.classList.add('btnExcluir');
+        botaoExcluir.addEventListener('click', function() {
+            excluirCliente(index);
+        });
+
+        // Adicionar o botão de excluir no item da lista
+        li.appendChild(botaoExcluir);
+        listaClientes.appendChild(li);
+    });
+}
+
+// Função para excluir o cliente
+function excluirCliente(index) {
+    let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
+
+    // Remover o cliente do array
+    clientes.splice(index, 1);
+
+    // Salvar novamente a lista de clientes no localStorage
+    localStorage.setItem('clientes', JSON.stringify(clientes));
+
+    // Atualizar a lista na página
+    exibirClientes();
+}
+
+// Chama a função para exibir os clientes
+exibirClientes();
+
+// Função para exibir a data atual no rodapé
+function formatarData() {
+    const hoje = new Date();
+    const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+    let dataFormatada = hoje.toLocaleDateString('pt-BR', opcoes);
+    return dataFormatada;
+}
+
+// Exibindo a data no rodapé
+const dataElemento = document.getElementById('dataatual');
+dataElemento.innerHTML = formatarData();
+
+<!-- Link para voltar à página inicial -->
+
+
+</script>
+
+</body>
+</html>

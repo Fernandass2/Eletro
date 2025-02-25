@@ -1,16 +1,18 @@
 /* Estilos globais */
-body {
+body, html {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
-/* Container principal */
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    min-height: 100vh; /* Garante que o conteúdo ocupe pelo menos a altura da tela */
+    padding-bottom: 40px; /* Espaço para não colidir com o rodapé */
 }
 
 /* Título */
@@ -80,9 +82,10 @@ footer {
     color: white;
     padding: 10px;
     text-align: center;
-    position: absolute;
+    position: relative; /* Ajustado para não se sobrepor ao conteúdo */
     width: 100%;
     bottom: 0;
+    margin-top: 20px; /* Adicionado para dar um espaçamento entre o conteúdo e o rodapé */
 }
 
 /* Estilo para a data no rodapé */

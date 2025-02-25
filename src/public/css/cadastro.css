@@ -1,73 +1,119 @@
-/* Garante que a página ocupe toda a altura da tela */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Faz com que o conteúdo principal ocupe o espaço disponível */
-.container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Estiliza o rodapé com cinza escuro */
-footer {
-    background-color: #333; /* Cinza escuro */
-    color: white; /* Cor do texto no rodapé */
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-}
-
-/* Formulário com largura limitada */
-form {
-    width: 100%;
-    max-width: 500px;
-}
-
-/* Estilo para cada grupo de campo, com espaçamento entre os itens */
-.form-group {
-    margin-bottom: 15px; /* Adiciona um espaço entre os campos */
-}
-
-/* Centraliza o texto dos botões */
-button {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-/* Botões */
-.btn-success {
-    background-color: #00FF00;
-    border-color: #00FF00;
-}
-
-.btn-warning {
-    background-color: #FF0000;
-    border-color: #FF0000;
-}
-
-.btn-secondary {
-    background-color: grey;
-    border-color: grey;
-}
-
-/* Barra de Horário (ajuste para a cor de fundo ser igual ao rodapé) */
-footer p {
-    margin: 0;
-    font-size: 14px;
-    padding: 5px 0;
-    background-color: #333; /* Garanta que o fundo seja igual ao do rodapé */
-    color: white; /* Cor do texto */
-}
-
-/* Impede rolagem horizontal */
+/* Estilo geral do corpo */
 body {
-    overflow-x: hidden; /* Impede a rolagem horizontal */
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Estilo do container principal */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título da página */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo do formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo dos campos do formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Estilo do botão */
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Link para voltar à lista de clientes */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    font-size: 14px;
+}
+
+/* Estilo das mensagens de erro e sucesso */
+.alert {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+.alert.success {
+    background-color: #28a745;
+}
+
+.alert.error {
+    background-color: #dc3545;
 }

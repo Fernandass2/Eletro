@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Administrador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 16px;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-link a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 16px;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Adicionar Administrador</h1>
+    <form id="formAdm" action="#" method="POST">
+        <label for="nome">Nome do Administrador:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <button type="submit">Adicionar Administrador</button>
+        <div class="error" id="error"></div>
+    </form>
+
+    <!-- Link para voltar ao índice -->
+    <div class="back-link">
+        <a href="../views/usuariospermitido.html">Voltar ao Início</a>
+    </div>
+</div>
+
+<script>
+    document.getElementById('formAdm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let nome = document.getElementById('nome').value;
+        let email = document.getElementById('email').value;
+        let senha = document.getElementById('senha').value;
+
+        if (nome && email && senha) {
+            alert('Administrador adicionado com sucesso!');
+            // Aqui você pode adicionar a lógica para enviar os dados para o servidor ou realizar alguma ação
+            document.getElementById('formAdm').reset();
+        } else {
+            document.getElementById('error').textContent = 'Todos os campos são obrigatórios!';
+        }
+    });
+</script>
+
+</body>
+</html>

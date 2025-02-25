@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Manutenção</title>
+    <link rel="stylesheet" href="../public/css/confirmacao_manutencao.css">
+</head>
+
+<body>
+    <header>
+        <h1>Confirmação de Manutenção</h1>
+    </header>
+
+    <section>
+        <h3>Dados Registrados:</h3>
+        <p><strong>Motivo da Manutenção:</strong> <span id="motivo_manutencao"></span></p>
+        <p><strong>Data da Manutenção:</strong> <span id="data_manutencao"></span></p>
+        <p><strong>Técnico Responsável:</strong> <span id="tecnico"></span></p>
+
+        <div>
+            <button onclick="editarRegistro()">Editar</button>
+            <button onclick="excluirRegistro()">Excluir</button>
+        </div>
+    </section>
+
+    <footer>
+        <p id="dataatual"></p>
+    </footer>
+
+    <script>
+        // Função para formatar a data
+        function formatarData() {
+            const hoje = new Date();
+            const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            let dataFormatada = hoje.toLocaleDateString('pt-BR', opcoes);
+            return dataFormatada;
+        }
+
+        // Exibindo a data no rodapé
+        const dataElemento = document.getElementById('dataatual');
+        dataElemento.innerHTML = formatarData();
+
+        // Recuperando os parâmetros da URL
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById("motivo_manutencao").textContent = params.get("motivo_manutencao");
+        document.getElementById("data_manutencao").textContent = params.get("data_manutencao");
+        document.getElementById("tecnico").textContent = params.get("tecnico");
+
+        // Função para editar o registro (voltar para o formulário)
+        function editarRegistro() {
+            window.location.href = "registro_manutencao.html?motivo_manutencao=" + encodeURIComponent(params.get("motivo_manutencao")) +
+                "&data_manutencao=" + encodeURIComponent(params.get("data_manutencao")) +
+                "&tecnico=" + encodeURIComponent(params.get("tecnico"));
+        }
+
+        // Função para excluir o registro (limpar a URL)
+        function excluirRegistro() {
+            if (confirm("Tem certeza de que deseja excluir esse registro?")) {
+                window.location.href = "registro_manutencao.html";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
