@@ -5,20 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Clientes</title>
     <link rel="stylesheet" href="../public/css/cadastro.css">
-    <link rel="stylesheet" href="../public/css/cliente.css">
+    <link rel="stylesheet" href="../public/css/clientes.css">
 </head>
 <body>
 
 <div class="container">
     <h1>Lista de Clientes</h1>
+
+    <!-- Lista de clientes -->
     <ul id="listaClientes">
-        <!-- Aqui serão listados os clientes -->
+        <!-- Os clientes cadastrados aparecerão aqui -->
     </ul>
 
+    <!-- Botões de navegação -->
+    <div class="botoes-navegacao">
+        <a href="../views/index.html" class="btnVoltar">🔙 Voltar para o Início</a>
+        <a href="../views/cadastro.html" class="btnCadastro">➕ Cadastrar Novo Cliente</a>
+    </div>
 </div>
-<!-- Link para voltar à página inicial -->
-<a href="../views/index.html" class="btnVoltar">Voltar para o Início</a>
-<a href="../views/cadastro.html">Cadastrar Novo Cliente</a>
 
 <!-- Rodapé com a data atual -->
 <footer class="footer">
@@ -33,7 +37,7 @@ function exibirClientes() {
     // Recuperar a lista de clientes do localStorage
     const clientes = JSON.parse(localStorage.getItem('clientes')) || [];
 
-    // Limpar a lista atual
+    // Limpar a lista antes de adicionar os novos itens
     listaClientes.innerHTML = '';
 
     // Adicionar os clientes na lista
@@ -41,52 +45,46 @@ function exibirClientes() {
         const li = document.createElement('li');
         li.textContent = `${cliente.nome} - ${cliente.email} - ${cliente.telefone} - ${cliente.endereco}`;
 
-        // Criar o botão de excluir
+        // Criar botão de excluir
         const botaoExcluir = document.createElement('button');
-        botaoExcluir.textContent = 'Excluir';
+        botaoExcluir.textContent = '🗑️ Excluir';
         botaoExcluir.classList.add('btnExcluir');
         botaoExcluir.addEventListener('click', function() {
             excluirCliente(index);
         });
 
-        // Adicionar o botão de excluir no item da lista
+        // Adicionar o botão de excluir ao item da lista
         li.appendChild(botaoExcluir);
         listaClientes.appendChild(li);
     });
 }
 
-// Função para excluir o cliente
+// Função para excluir cliente
 function excluirCliente(index) {
     let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
 
-    // Remover o cliente do array
+    // Remover cliente do array
     clientes.splice(index, 1);
 
-    // Salvar novamente a lista de clientes no localStorage
+    // Salvar a lista atualizada no localStorage
     localStorage.setItem('clientes', JSON.stringify(clientes));
 
-    // Atualizar a lista na página
+    // Atualizar a exibição da lista
     exibirClientes();
 }
 
-// Chama a função para exibir os clientes
+// Chama a função para exibir os clientes ao carregar a página
 exibirClientes();
 
 // Função para exibir a data atual no rodapé
 function formatarData() {
     const hoje = new Date();
     const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-    let dataFormatada = hoje.toLocaleDateString('pt-BR', opcoes);
-    return dataFormatada;
+    return hoje.toLocaleDateString('pt-BR', opcoes);
 }
 
-// Exibindo a data no rodapé
-const dataElemento = document.getElementById('dataatual');
-dataElemento.innerHTML = formatarData();
-
-<!-- Link para voltar à página inicial -->
-
-
+// Exibir a data no rodapé
+document.getElementById('dataatual').innerHTML = formatarData();
 </script>
 
 </body>

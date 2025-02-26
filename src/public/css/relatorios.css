@@ -1,11 +1,113 @@
-/* Estilos para o rodapé */
-footer {
-    background-color: #343a40; /* Cinza escuro */
-    color: white; /* Cor do texto */
-    padding: 10px 0;
+/* Resetando margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-footer p {
-    margin: 0;
+/* Estilo do corpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container principal */
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Estilo do título */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo das ordens de serviço */
+.ordemServico {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.ordemServico p {
+    margin-bottom: 8px;
+}
+
+.ordemServico strong {
+    color: #333;
+}
+
+/* Estilo dos botões */
+.botoes {
+    margin-top: 10px;
+}
+
+.botoes button {
+    padding: 8px 15px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 14px;
+}
+
+.botoes .editar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.botoes .excluir {
+    background-color: #f44336;
+    color: white;
+}
+
+.botoes button:hover {
+    opacity: 0.8;
+}
+
+/* Estilo do botão voltar ao início */
+button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo do rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* Estilo para a data do rodapé */
+#dataatual {
+    font-weight: bold;
 }

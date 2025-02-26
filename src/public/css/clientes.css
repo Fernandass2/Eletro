@@ -36,7 +36,7 @@ h1 {
 
 #listaClientes li {
     display: flex;
-    justify-content: space-between; /* Coloca o conteúdo e o botão de excluir em extremos opostos */
+    justify-content: space-between; /* Alinha o conteúdo e o botão de excluir nas extremidades */
     align-items: center; /* Alinha verticalmente */
     background-color: #f9f9f9;
     padding: 15px;
@@ -63,6 +63,37 @@ h1 {
 
 .btnExcluir:hover {
     background-color: #c82333;
+}
+
+/* Botões de navegação */
+.botoes-navegacao {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.botoes-navegacao a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.botoes-navegacao a:hover {
+    background-color: #0056b3;
+}
+
+.botoes-navegacao .btnCadastro {
+    background-color: #28a745; /* Cor verde para o cadastro */
+}
+
+.botoes-navegacao .btnCadastro:hover {
+    background-color: #218838; /* Cor verde escuro */
 }
 
 /* Link para cadastrar novo cliente */
@@ -93,21 +124,19 @@ a:hover {
     margin-top: auto;
     font-size: 14px;
 }
-/* Estilo do botão Voltar para o Início */
+
+/* Botão de Voltar ao Início */
 .btnVoltar {
     display: inline-block;
-    margin-top: 30px;
-    text-align: center;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff; /* Cor azul */
     padding: 10px 20px;
-    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
     font-weight: bold;
+    transition: 0.3s;
 }
 
 .btnVoltar:hover {
-    background-color: #0056b3; /* Cor azul escuro ao passar o mouse */
+    background-color: #0056b3;
 }

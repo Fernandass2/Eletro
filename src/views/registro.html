@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros de Manutenção</title>
+    <link rel="stylesheet" href="../public/css/registro.css">
+</head>
+
+<body>
+    <header>
+        <h1>Registros de Manutenção</h1>
+    </header>
+
+    <section>
+        <h2>Histórico de Manutenção</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Motivo</th>
+                    <th>Data</th>
+                    <th>Técnico</th>
+                    <th>Ações</th> <!-- Coluna para os botões de ação -->
+                </tr>
+            </thead>
+            <tbody id="tabela-registros">
+                <!-- Os registros serão preenchidos dinamicamente aqui -->
+            </tbody>
+        </table>
+        
+        <div class="form-buttons">
+            <a href="../views/index.html">
+                <button type="button" class="btn btn-warning">Voltar ao Início</button>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p id="dataatual"></p>
+    </footer>
+
+    <script>
+        // Função para carregar e exibir os registros
+        function carregarRegistros() {
+            const registros = JSON.parse(localStorage.getItem('registros_manutencao')) || [];
+
+            const tabela = document.getElementById('tabela-registros');
+            tabela.innerHTML = '';
+
+            registros.forEach((registro, index) => {
+                const linha = document.createElement('tr');
+
+                const colunaMotivo = document.createElement('td');
+                colunaMotivo.textContent = registro.motivo;
+                linha.appendChild(colunaMotivo);
+
+                const colunaData = document.createElement('td');
+                colunaData.textContent = registro.data;
+                linha.appendChild(colunaData);
+
+                const colunaTecnico = document.createElement('td');
+                colunaTecnico.textContent = registro.tecnico;
+                linha.appendChild(colunaTecnico);
+
+                // Coluna de Ações (Editar e Excluir)
+                const colunaAcoes = document.createElement('td');
+
+                const botaoEditar = document.createElement('button');
+                botaoEditar.textContent = 'Editar';
+                botaoEditar.onclick = () => editarRegistro(index);
+                colunaAcoes.appendChild(botaoEditar);
+
+                const botaoExcluir = document.createElement('button');
+                botaoExcluir.textContent = 'Excluir';
+                botaoExcluir.onclick = () => excluirRegistro(index);
+                colunaAcoes.appendChild(botaoExcluir);
+
+                linha.appendChild(colunaAcoes);
+
+                tabela.appendChild(linha);
+            });
+        }
+
+        // Função para editar o registro
+        function editarRegistro(index) {
+            const registros = JSON.parse(localStorage.getItem('registros_manutencao')) || [];
+            const registro = registros[index];
+
+            const novoMotivo = prompt("Editar Motivo", registro.motivo);
+            const novaData = prompt("Editar Data", registro.data);
+            const novoTecnico = prompt("Editar Técnico", registro.tecnico);
+
+            if (novoMotivo && novaData && novoTecnico) {
+                registros[index] = { motivo: novoMotivo, data: novaData, tecnico: novoTecnico };
+                localStorage.setItem('registros_manutencao', JSON.stringify(registros));
+                carregarRegistros();
+            }
+        }
+
+        // Função para excluir o registro
+        function excluirRegistro(index) {
+            if (confirm("Tem certeza que deseja excluir este registro?")) {
+                const registros = JSON.parse(localStorage.getItem('registros_manutencao')) || [];
+                registros.splice(index, 1); // Remove o registro selecionado
+                localStorage.setItem('registros_manutencao', JSON.stringify(registros));
+                carregarRegistros();
+            }
+        }
+
+        // Carregar os registros ao carregar a página
+        window.onload = carregarRegistros;
+
+        // Função para formatar a data
+        function formatarData() {
+            const hoje = new Date();
+            const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            let dataFormatada = hoje.toLocaleDateString('pt-BR', opcoes);
+            return dataFormatada;
+        }
+
+        // Exibindo a data no rodapé
+        const dataElemento = document.getElementById('dataatual');
+        dataElemento.innerHTML = formatarData();
+    </script>
+</body>
+
+</html>

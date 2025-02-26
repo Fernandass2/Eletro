@@ -14,7 +14,7 @@
     </header>
 
     <section>
-        <form action="confirmacao_manutencao" method="GET">
+        <form action="registro.html" method="GET" onsubmit="salvarRegistro()">
             <label for="motivo_manutencao">Motivo da Manutenção:</label><br>
             <textarea id="motivo_manutencao" name="motivo_manutencao" rows="4" cols="50" required></textarea><br><br>
 
@@ -28,12 +28,11 @@
         </form>
 
         <!-- Botão Voltar ao Início -->
-            <div class="form-buttons">
-             <a href="../views/index.html">
-        <button type="button" class="btn btn-warning">Voltar ao Início</button>
-        </a>    
+        <div class="form-buttons">
+            <a href="../views/index.html">
+                <button type="button" class="btn btn-warning">Voltar ao Início</button>
+            </a>    
         </div>
-
     </section>
 
     <footer>
@@ -41,6 +40,18 @@
     </footer>
 
     <script>
+        // Função para salvar os dados no localStorage antes de redirecionar
+        function salvarRegistro() {
+            const motivo = document.getElementById('motivo_manutencao').value;
+            const data = document.getElementById('data_manutencao').value;
+            const tecnico = document.getElementById('tecnico').value;
+
+            let registros = JSON.parse(localStorage.getItem('registros_manutencao')) || [];
+            registros.push({ motivo, data, tecnico });
+
+            localStorage.setItem('registros_manutencao', JSON.stringify(registros));
+        }
+
         // Função para formatar a data
         function formatarData() {
             const hoje = new Date();

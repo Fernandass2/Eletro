@@ -4,12 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Cliente</title>
+    
+    <!-- Tenta carregar o CSS -->
     <link rel="stylesheet" href="../public/css/cadastro.css">
+    
+    <!-- CSS interno para teste -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .botoes-navegacao {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .btn-voltar {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .footer {
+            margin-top: 20px;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Cadastrar Novo Cliente</h1>
+
     <form id="formCadastro">
         <div class="form-group">
             <label for="nome">Nome:</label>
@@ -29,7 +105,12 @@
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
-    <a href="../views/clientes.html">Ver Lista de Clientes</a>
+
+    <!-- Botões de navegação -->
+    <div class="botoes-navegacao">
+        <a href="../views/clientes.html" class="btn btn-ver-clientes">👥 Ver Lista de Clientes</a>
+        <a href="../views/index.html" class="btn btn-voltar">🔙 Voltar ao Início</a>
+    </div>
 </div>
 
 <!-- Rodapé com a data atual -->
@@ -60,10 +141,7 @@ document.getElementById('formCadastro').addEventListener('submit', function(even
     localStorage.setItem('clientes', JSON.stringify(clientes));
 
     // Limpar os campos do formulário
-    document.getElementById('nome').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('telefone').value = '';
-    document.getElementById('endereco').value = '';
+    document.getElementById('formCadastro').reset();
 
     alert('Cliente cadastrado com sucesso!');
 });
@@ -72,13 +150,11 @@ document.getElementById('formCadastro').addEventListener('submit', function(even
 function formatarData() {
     const hoje = new Date();
     const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-    let dataFormatada = hoje.toLocaleDateString('pt-BR', opcoes);
-    return dataFormatada;
+    return hoje.toLocaleDateString('pt-BR', opcoes);
 }
 
-// Exibindo a data no rodapé
-const dataElemento = document.getElementById('dataatual');
-dataElemento.innerHTML = formatarData();
+// Exibir a data no rodapé
+document.getElementById('dataatual').innerHTML = formatarData();
 </script>
 
 </body>

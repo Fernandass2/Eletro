@@ -21,40 +21,46 @@
 
         <!-- Tabela de Relatório (exemplo) -->
         <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome do Cliente</th>
-                    <th>Data de Entrada</th>
-                    <th>Data de Saída</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Exemplo de dados -->
-                <tr>
-                    <td>1</td>
-                    <td>João Silva</td>
-                    <td>2025-02-20</td>
-                    <td>2025-02-22</td>
-                    <td>Concluído</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Maria Oliveira</td>
-                    <td>2025-02-18</td>
-                    <td>2025-02-21</td>
-                    <td>Em andamento</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lucas Pereira</td>
-                    <td>2025-02-19</td>
-                    <td>2025-02-20</td>
-                    <td>Concluído</td>
-                </tr>
-            </tbody>
-        </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome do Cliente</th>
+                        <th>Data de Entrada</th>
+                        <th>Data de Saída</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaSuporte">
+                    <!-- As ordens de serviço serão inseridas aqui -->
+                </tbody>
+            </table>
+            
+            <script>
+                function carregarSuporte() {
+                    let ordens = JSON.parse(localStorage.getItem('ordens')) || [];
+            
+                    let tabela = document.getElementById("tabelaSuporte");
+                    tabela.innerHTML = ""; // Limpa antes de adicionar
+            
+                    ordens.forEach((os, index) => {
+                        let novaLinha = `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${os.cliente}</td>
+                                <td>${os.data}</td>
+                                <td>-</td> <!-- Data de saída pode ser atualizada depois -->
+                                <td>${os.status}</td>
+                            </tr>
+                        `;
+                        tabela.innerHTML += novaLinha;
+                    });
+                }
+            
+                // Carregar a tabela ao abrir a página
+                carregarSuporte();
+            </script>
+            
 
         <hr>
 
@@ -72,7 +78,7 @@
                 <label for="descricaoProblema">Descrição do Problema:</label>
                 <textarea class="form-control" id="descricaoProblema" rows="4" placeholder="Descreva o problema encontrado" required></textarea>
             </div>
-            <button type="submit" class="btn btn-danger">Relatar Problema</button>
+            <button onclick="window.location.href='confirmacao.html'">Relatar Problema</button>
         </form>
 
         <hr>

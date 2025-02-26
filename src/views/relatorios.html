@@ -1,94 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório</title>
-
-    <!-- Estilos personalizados -->
+    <title>Relatório de Ordens de Serviço</title>
     <link rel="stylesheet" href="../public/css/relatorios.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-
 <body>
 
-    <div class="container my-5">
-        <h2>Relatório de Atendimentos</h2>
-
-        <!-- Formulário de Busca -->
-        <div class="form-group">
-            <label for="buscar">Digite o Nome ou ID para pesquisa:</label>
-            <input type="text" class="form-control" id="buscar" placeholder="Nome ou ID">
+    <!-- Conteúdo principal -->
+    <div class="container">
+        <h1>Relatório de Ordens de Serviço</h1>
+        
+        <div id="conteudo">
+            <!-- As ordens de serviço serão inseridas aqui -->
         </div>
 
-        <button class="btn btn-primary" onclick="buscarAtendimento()">Pesquisar</button>
-
-        <div id="resultado" class="mt-4"></div>
-
-        <hr>
-
-        <!-- Relatório Completo -->
-        <h4>Todos os Atendimentos:</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Cliente</th>
-                    <th>Data Entrada</th>
-                    <th>Data Saída</th>
-                    <th>Valor</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="tabela">
-                <tr>
-                    <td>1</td>
-                    <td>João Silva</td>
-                    <td>24/02/2025</td>
-                    <td>25/02/2025</td>
-                    <td>R$ 100,00</td>
-                    <td>Concluído</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Maria Oliveira</td>
-                    <td>23/02/2025</td>
-                    <td>24/02/2025</td>
-                    <td>R$ 150,00</td>
-                    <td>Em andamento</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Link para Cadastro -->
-        <a href="../views/cadastro.html" class="btn btn-secondary mt-3">Ir para Cadastro</a>
+        <button onclick="window.location.href='index.html'">Voltar ao Início</button>
     </div>
 
-    <!-- Rodapé -->
+    <!-- Rodapé com a data atual -->
     <footer class="bg-dark text-white text-center py-2">
         <p id="dataatual"></p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Script para exibir a data no rodapé -->
     <script>
-        function formatarData() {
+         // Função para formatar a data
+         function formatarData() {
             const hoje = new Date();
             const opcoes = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
             let dataFormatada = hoje.toLocaleDateString('pt-BR', opcoes);
             return dataFormatada;
         }
+
+        // Exibindo a data no rodapé
         const dataElemento = document.getElementById('dataatual');
         dataElemento.innerHTML = formatarData();
+
+        // Função para carregar as ordens de serviço do localStorage
+        function carregarOrdens() {
+            let ordens = JSON.parse(localStorage.getItem('ordens')) || []; // Carrega ordens salvas
+
+            if (ordens.length === 0) {
+                document.getElementById('conteudo').innerHTML = "<p>Nenhuma ordem de serviço registrada.</p>";
+                return;
+            }
+
+            let htmlContent = '';
+            ordens.forEach((os, index) => {
+                // Verifica se todos os campos existem antes de exibir
+                if (os.cliente && os.eletrodomestico && os.servico && os.data && os.status) {
+                    htmlContent += `
+                        <div class="ordemServico">
+                            <h3>Ordem de Serviço ${index + 1}</h3>
+                            <p><strong>Cliente:</strong> ${os.cliente}</p>
+                            <p><strong>Eletrodoméstico:</strong> ${os.eletrodomestico}</p>
+                            <p><strong>Serviço:</strong> ${os.servico}</p>
+                            <p><strong>Data:</strong> ${os.data}</p>
+                            <p><strong>Status:</strong> ${os.status}</p>
+                            <hr>
+                        </div>
+                    `;
+                }
+            });
+
+            document.getElementById('conteudo').innerHTML = htmlContent || "<p>Nenhuma ordem de serviço válida registrada.</p>";
+        }
+
+        // Chama a função para carregar os relatórios ao abrir a página
+        carregarOrdens();
     </script>
 
 </body>
-
 </html>

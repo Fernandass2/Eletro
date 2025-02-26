@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eletrodomésticos Atendidos</title>
-
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="../public/css/eletrodomestico.css">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -17,18 +15,104 @@
 
     <div class="container my-5">
         <h2>Eletrodomésticos Atendidos</h2>
-        <p>Abaixo estão os eletrodomésticos que oferecemos suporte técnico.</p>
+        <p>Abaixo estão os eletrodomésticos que oferecemos suporte técnico. Clique no nome do item para ver os modelos.</p>
 
         <!-- Lista de Eletrodomésticos -->
         <ul class="list-group">
-            <li class="list-group-item">Geladeira</li>
-            <li class="list-group-item">Micro-ondas</li>
-            <li class="list-group-item">Lavadora de Roupas</li>
-            <li class="list-group-item">Secadora de Roupas</li>
-            <li class="list-group-item">Ar-condicionado</li>
-            <li class="list-group-item">Ferro de Passar</li>
-            <li class="list-group-item">Aspirador de Pó</li>
-            <li class="list-group-item">Cafeteira</li>
+            <!-- Botão de Geladeira -->
+            <li class="list-group-item">
+                <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#geladeira">
+                    Geladeira
+                </button>
+                <div id="geladeira" class="collapse">
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Geladeira Duplex')">
+                                Geladeira Duplex
+                            </button>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Geladeira Side by Side')">
+                                Geladeira Side by Side
+                            </button>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Geladeira com Freezer Inferior')">
+                                Geladeira com Freezer Inferior
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Botão de Micro-ondas -->
+            <li class="list-group-item">
+                <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#microondas">
+                    Micro-ondas
+                </button>
+                <div id="microondas" class="collapse">
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Micro-ondas de 20L')">
+                                Micro-ondas de 20L
+                            </button>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Micro-ondas Grill')">
+                                Micro-ondas Grill
+                            </button>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Micro-ondas Inverter')">
+                                Micro-ondas Inverter
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Botão de Lavadora de Roupas -->
+            <li class="list-group-item">
+                <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#lavadora">
+                    Lavadora de Roupas
+                </button>
+                <div id="lavadora" class="collapse">
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Lavadora de 10kg')">
+                                Lavadora de 10kg
+                            </button>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Lavadora com Secadora')">
+                                Lavadora com Secadora
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Botão de Ar-condicionado -->
+            <li class="list-group-item">
+                <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#arcondicionado">
+                    Ar-condicionado
+                </button>
+                <div id="arcondicionado" class="collapse">
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Ar-condicionado Split 9000 BTUs')">
+                                Ar-condicionado Split 9000 BTUs
+                            </button>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-info btn-block" onclick="selecionarEletrodomestico('Ar-condicionado Portátil')">
+                                Ar-condicionado Portátil
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             <!-- Adicione mais conforme necessário -->
         </ul>
 
@@ -58,6 +142,12 @@
         }
         const dataElemento = document.getElementById('dataatual');
         dataElemento.innerHTML = formatarData();
+
+        // Função para salvar a escolha do Eletrodoméstico no localStorage
+        function selecionarEletrodomestico(eletrodomestico) {
+            localStorage.setItem('eletrodomesticoEscolhido', eletrodomestico);
+            window.location.href = 'os.html'; // Redireciona para a página de Ordem de Serviço
+        }
     </script>
 
 </body>

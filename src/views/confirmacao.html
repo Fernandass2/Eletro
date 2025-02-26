@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema Relatado com Sucesso</title>
+    <link rel="stylesheet" href="../public/css/confirmacao.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Problema Relatado com Sucesso!</h1>
+        <p>A sua ordem de serviço foi registrada com sucesso. Nosso time entrará em contato em breve.</p>
+        <button onclick="window.location.href='index.html'">Voltar ao Início</button>
+    </div>
+
+    <footer>
+        <div id="dataHoraAtual"></div>
+    </footer>
+
+    <script>
+        // Função para mostrar a data atual no rodapé
+        function atualizarDataHora() {
+            const agora = new Date();
+            const dia = String(agora.getDate()).padStart(2, '0');
+            const mes = String(agora.getMonth() + 1).padStart(2, '0');
+            const ano = agora.getFullYear();
+
+            const dataFormatada = `${dia}/${mes}/${ano}`;
+            document.getElementById("dataHoraAtual").innerText = `Data: ${dataFormatada}`;
+        }
+
+        atualizarDataHora(); // Iniciar logo ao carregar a página
+    </script>
+
+</body>
+</html>
